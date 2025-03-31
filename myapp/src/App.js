@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Johnnysky from './Johnnysky';
+
 
 class App extends Component {
   render() {
@@ -6,6 +8,7 @@ class App extends Component {
       <div className="App">
         <h1>My first React app!</h1>
         <p>Welcome :)</p>
+        <Johnnysky/>
       </div>
     );
   }
