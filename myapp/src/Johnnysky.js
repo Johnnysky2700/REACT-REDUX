@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 
 class Johnnysky extends Component{
     render(){
-        // console.log(this.props); 
-        const { name, age, belt } = this.props;
+        const { johnnysky } = this.props;
+        const johnnyList = johnnysky.map(johnny => {
+            return (
+                <div className='johnnysky' key={johnny.id}>
+                   <div>Name: { johnny.name }</div>
+                   <div>Age: { johnny.age }</div>
+                   <div>Belt: { johnny.belt }</div>
+                </div>
+            )
+        })
         return(
-            <div className='Johnnysky'>
-                <div>Name: { name }</div>
-                <div>Age: { age }</div>
-                <div>Belt: { belt }</div>
+            <div className="johnny-list">
+                { johnnyList }
             </div>
         );
     }
