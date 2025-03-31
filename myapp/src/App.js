@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Johnnysky from './Johnnysky';
 
-
 class App extends Component {
   state = {
     johnnysky : [

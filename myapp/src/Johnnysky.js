@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-class Johnnysky extends Component{
-    render(){
-        const { johnnysky } = this.props;
+const Johnnysky = ({johnnysky}) => {
         const johnnyList = johnnysky.map(johnny => {
             return (
                 <div className='johnnysky' key={johnny.id}>
@@ -11,13 +9,12 @@ class Johnnysky extends Component{
                    <div>Belt: { johnny.belt }</div>
                 </div>
             )
-        })
-        return(
-            <div className="johnny-list">
-                { johnnyList }
+    })
+    return(
+        <div className="johnny-list">
+            { johnnyList }
             </div>
-        );
-    }
+    )
 }
 
 export default Johnnysky
