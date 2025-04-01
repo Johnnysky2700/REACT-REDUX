@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Johnnysky.css'
 
 const Johnnysky = ({johnnysky, deleteJohnny}) => {
     const johnnyList = johnnysky.map(johnny => {
