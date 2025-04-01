@@ -17,12 +17,20 @@ class App extends Component {
       johnnysky: johnnysky
      })
   }
+  deleteJohnny = (id) => {
+      let johnnysky = this.state.johnnysky.filter(johnny => {
+        return johnny.id !== id
+      });
+      this.setState({
+        johnnysky: johnnysky
+      })
+  }
   render() {
     return (
       <div className="App">
         <h1>My first React app!</h1>
         <p>Welcome :)</p>
-        <Johnnysky johnnysky={this.state.johnnysky} />
+        <Johnnysky deleteJohnny={this.deleteJohnny} johnnysky={this.state.johnnysky} />
         <AddJohnny addJohnny={this.addJohnny}/>
       </div>
     );
