@@ -13,7 +13,7 @@ class AddJohnny extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        this.props.addJohnny(this.state);
     }
     render(){
         return (

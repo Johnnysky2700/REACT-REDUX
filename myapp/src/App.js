@@ -10,13 +10,20 @@ class App extends Component {
       { name: 'Crystal', age: 25, belt: 'pink', id: 3 },
     ]
   }
+  addJohnny = (johnny) => {
+     johnny.id = Math.random();
+     let johnnysky = [...this.state.johnnysky, johnny];
+     this.setState({
+      johnnysky: johnnysky
+     })
+  }
   render() {
     return (
       <div className="App">
         <h1>My first React app!</h1>
         <p>Welcome :)</p>
         <Johnnysky johnnysky={this.state.johnnysky} />
-        <AddJohnny/>
+        <AddJohnny addJohnny={this.addJohnny}/>
       </div>
     );
   }
