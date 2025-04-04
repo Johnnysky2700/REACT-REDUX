@@ -6,7 +6,7 @@ const Navbar = () => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            navigate('/about'); // ✅ Replaces props.history.push
+            navigate(''); // ✅ Replaces props.history.push
         }, 2000);
 
         return () => clearTimeout(timer); // Cleanup to prevent memory leaks

@@ -1,12 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Home = () => {
+    const [posts, setPosts] = useState([]); // ✅ Use state to store posts
+
+    useEffect(() => {
+        axios.get("https://jsonplaceholder.typicode.com/posts")
+            .then(res => {
+                console.log("API Response:", res.data);
+                setPosts(res.data.slice(0, 10)); // ✅ Set the first 10 posts
+            })
+            .catch(err => {
+                console.error("Error fetching posts:", err);
+            });
+    }, []); // ✅ Runs only once when the component mounts
+
     return (
         <div className="container">
             <h4 className="center">Home</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            {posts.length ? (
+                posts.map(post => (
+                    <div className="post card" key={post.id}>
+                        <div className="card-content">
+                            <span className="card-title">{post.title}</span>
+                            <p>{post.body}</p>
+                        </div>
+                    </div>
+                ))
+            ) : (
+                <div className="center">No posts yet</div>
+            )}
         </div>
-    )
-}
+    );
+};
 
 export default Home;

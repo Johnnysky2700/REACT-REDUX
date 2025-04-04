@@ -6,7 +6,7 @@ const Contact = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            navigate('/about'); // ✅ Use navigate instead of props.history.push
+            navigate(''); // ✅ Use navigate instead of props.history.push
         }, 2000);
     }, [navigate]);
 
