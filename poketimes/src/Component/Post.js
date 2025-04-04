@@ -1,17 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const Post = () => {
-    const { post_id } = useParams(); // ✅ Get route param
-    const [id, setId] = useState(null);
+    const { post_id } = useParams(); // ✅ get param from route
+    const [post, setPost] = useState(null);
 
     useEffect(() => {
-        setId(post_id); // ✅ Set the id
+        axios.get(`https://jsonplaceholder.typicode.com/posts/${post_id}`)
+            .then(res => {
+                setPost(res.data);
+            })
+            .catch(err => {
+                console.error("Failed to fetch post:", err);
+            });
     }, [post_id]);
 
     return (
         <div className="container">
-            <h4>{id}</h4>
+            {post ? (
+                <div className="post">
+                    <h4 className='center'>{post.title}</h4>
+                    <p>{post.body}</p>
+                </div>
+            ) : (
+                <div className="center">Loading post...</div>
+            )}
         </div>
     );
 };

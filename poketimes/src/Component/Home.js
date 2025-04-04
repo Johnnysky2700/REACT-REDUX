@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom'
 
 const Home = () => {
     const [posts, setPosts] = useState([]); // ✅ Use state to store posts
@@ -22,7 +23,9 @@ const Home = () => {
                 posts.map(post => (
                     <div className="post card" key={post.id}>
                         <div className="card-content">
+                            <Link to={'/' + post.id}>
                             <span className="card-title">{post.title}</span>
+                            </Link>
                             <p>{post.body}</p>
                         </div>
                     </div>
