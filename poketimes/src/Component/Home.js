@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom'
+import Pokeball from '../pokeball.png'
 
 const Home = () => {
     const [posts, setPosts] = useState([]); // ✅ Use state to store posts
@@ -17,14 +18,15 @@ const Home = () => {
     }, []); // ✅ Runs only once when the component mounts
 
     return (
-        <div className="container">
+        <div className="container home">
             <h4 className="center">Home</h4>
             {posts.length ? (
                 posts.map(post => (
                     <div className="post card" key={post.id}>
+                        <img src={Pokeball} alt="A pokeball" />
                         <div className="card-content">
                             <Link to={'/' + post.id}>
-                            <span className="card-title">{post.title}</span>
+                            <span className="card-title red-text">{post.title}</span>
                             </Link>
                             <p>{post.body}</p>
                         </div>
