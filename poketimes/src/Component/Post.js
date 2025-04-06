@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { deletePost } from '../actions/postActions';
 
 const Post = () => {
     const { post_id } = useParams();
@@ -10,9 +11,9 @@ const Post = () => {
     const post = useSelector(state => state.posts.find(p => p.id === post_id));
 
     const handleClick = () => {
-        dispatch({ type: 'DELETE_POST', id: post_id });
+        dispatch(deletePost(post_id));
         navigate('/');
-    };
+    };    
 
     return (
         <div className="container">
