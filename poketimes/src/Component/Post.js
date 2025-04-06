@@ -1,26 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const Post = () => {
-    const { post_id } = useParams(); // ✅ get param from route
-    const [post, setPost] = useState(null);
-
-    useEffect(() => {
-        axios.get(`https://jsonplaceholder.typicode.com/posts/${post_id}`)
-            .then(res => {
-                setPost(res.data);
-            })
-            .catch(err => {
-                console.error("Failed to fetch post:", err);
-            });
-    }, [post_id]);
+    const { post_id } = useParams(); // grabs the ID from the URL
+    const post = useSelector(state => state.posts.find(p => p.id === post_id));
 
     return (
         <div className="container">
             {post ? (
                 <div className="post">
-                    <h4 className='center'>{post.title}</h4>
+                    <h4 className="center">{post.title}</h4>
                     <p>{post.body}</p>
                 </div>
             ) : (
